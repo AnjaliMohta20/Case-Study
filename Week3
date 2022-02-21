@@ -1,0 +1,222 @@
+import java.util.HashMap;
+import java.util.Scanner;
+import java.util.Set;
+
+class EncapClass{
+	private int Pid;
+	private String Pname;
+	private int Pamt;
+	private int Pcode;
+	private String Padd;
+	private int PaddPin;
+	
+	public int getPid() {
+		return Pid;
+	}
+	public void setPid(int Pid) {
+		this.Pid = Pid;
+	}
+	public String getPname() {
+		return Pname;
+	}
+	public void setPname(String Pname) {
+		this.Pname = Pname;
+	}
+	public int getPamt() {
+		return Pamt;
+	}
+	public void setPamt(int Pamt) {
+		this.Pamt = Pamt;
+	}
+	public int getPcode() {
+		return Pcode;
+	}
+	public void setPcode(int Pcode) {
+		this.Pcode = Pcode;
+	}
+	public String getPadd() {
+		return Padd;
+	}
+	public void setPadd(String Padd) {
+		this.Padd = Padd;
+	}
+	public int getPaddPin() {
+		return PaddPin;
+	}
+	public void setPaddPin(int PaddPin) {
+		this.PaddPin = PaddPin;
+	}
+}
+
+public class CS3 extends EncapClass{
+	public void AddProduct(){
+		System.out.println("Input the following Details to Add Product:");
+		Scanner sc= new Scanner(System.in);
+		
+		//Input the Product ID
+		System.out.println("Product Id:");
+		int Pid= sc.nextInt();
+		sc.nextLine();
+		setPid(Pid);
+		
+		//Input the Product Name
+		System.out.println("Product Name:");
+		String Pname = sc.nextLine();
+		setPname(Pname);
+		
+		//Input the Product amount
+		System.out.println("Product Amount:");
+		int Pamt= sc.nextInt();
+		setPamt(Pamt);
+		
+		//Input the Product Code
+		System.out.println("Product Code:");
+		int v4= sc.nextInt();
+		setPcode(v4);
+		sc.nextLine();
+		
+		//Input the Product Address
+		System.out.println("Product Address:");
+		String Padd= sc.nextLine();
+		setPadd(Padd);
+		
+		//Input the Product Add Pin
+		System.out.println("Product Address PinCode:");
+		int PaddPin= sc.nextInt();
+		setPaddPin(PaddPin);
+				
+			
+			
+	}
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "Product id" + getPid() + "\n"+"Product Name " + getPname() + "\n" + "Amount " + getPamt() + "\n"
+				+ "Product Code " + getPcode() + "\n" + "Address " + getPadd() + "\n" + "Pincode " + getPaddPin()
+				+ "\n";
+	}
+	
+	public static void main(String[] args) {
+		HashMap<Integer,CS3> DB= new HashMap<Integer,CS3>();
+		
+		int swi = 0;
+		Scanner sc = new Scanner(System.in);
+
+		while (true) {
+			System.out.println("\n****Enter a choice****\n");
+			System.out.println("Press 1 for Add Product");
+			System.out.println("Press 2 for Update in Product");
+			System.out.println("Press 3 for Delete Product");
+			System.out.println("Press 4 for Get Product ");
+			System.out.println("Press 5 for Get All Products");
+			System.out.println("Press 6 for Exit");
+			swi = sc.nextInt();
+			if (swi == 6) {
+				break;
+			}
+			switch (swi) {
+			case 1: {
+				CS3 obj = new CS3();
+				obj.AddProduct();
+				DB.put(obj.getPid(), obj);
+				System.out.println("Added Successfully");
+
+				break;
+			}
+
+			case 2: {
+
+				System.out.println("Enter Product id");
+				int n = sc.nextInt();
+				DB.get(n).AddProduct();
+				System.out.println("Updated Successfully \n");
+				break;
+
+			}
+			case 3: {
+
+				System.out.println("Enter Product id");
+				int n = sc.nextInt();
+				DB.remove(n);
+				System.out.println("Product Removed \n");
+				break;
+
+			}
+			case 4: {
+				System.out.println("Enter Product id");
+				int n = sc.nextInt();
+				System.out.println(DB.get(n));
+				break;
+
+			}
+			case 5: {
+				Set<Integer> s = DB.keySet();
+				for (Object obj2 : s) {
+					System.out.println(DB.get(obj2));
+				}
+				break;
+			}
+
+			}
+
+		}
+
+	}
+}
+
+
+
+
+/*
+
+****Enter a choice****
+
+Press 1 for Add Product
+Press 2 for Update in Product
+Press 3 for Delete Product
+Press 4 for Get Product 
+Press 5 for Get All Products
+Press 6 for Exit
+1
+Input the following Details to Add Product:
+Product Id:
+1
+Product Name:
+UUUU
+Product Amount:
+123
+Product Code:
+9988
+Product Address:
+uuujjjj
+Product Address PinCode:
+98745
+Added Successfully
+
+****Enter a choice****
+
+Press 1 for Add Product
+Press 2 for Update in Product
+Press 3 for Delete Product
+Press 4 for Get Product 
+Press 5 for Get All Products
+Press 6 for Exit
+5
+Product id1
+Product Name UUUU
+Amount 123
+Product Code 9988
+Address uuujjjj
+Pincode 98745
+
+
+****Enter a choice****
+
+Press 1 for Add Product
+Press 2 for Update in Product
+Press 3 for Delete Product
+Press 4 for Get Product 
+Press 5 for Get All Products
+Press 6 for Exit
+6
+*/
