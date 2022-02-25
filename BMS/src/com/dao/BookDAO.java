@@ -36,15 +36,16 @@ public class BookDAO {
 		ResultSet rs=null;
 		con=BookDB.getConnection();
 		
-		String sel_input="Select btitle,bprice,bgrade where bid=?";
+		String sel_input="Select Btitle,Bprice,Bgrade from book where bid=?";
 		stmt=con.prepareStatement(sel_input);
 		stmt.setInt(1,Bid);
 		rs=stmt.executeQuery();
 		ArrayList result=new ArrayList();
 		if(rs.next()) {
+			//result.add(rs.getString(0));
 			result.add(rs.getString(1));
 			result.add(rs.getString(2));
-			
+			result.add(rs.getString(3));
 		}
 		else {
 			result.add("Invalid Id");

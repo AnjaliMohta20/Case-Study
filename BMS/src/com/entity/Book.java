@@ -4,10 +4,12 @@ import java.io.Serializable;
 
 public class Book implements Serializable {
 	
+	
 	private int Bid;
 	private String Btitle;
 	private float Bprice;
 	private String Bgrade;
+	
 	public int getBid() {
 		return Bid;
 	}
